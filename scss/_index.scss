@@ -1,0 +1,11 @@
+// This file forwards all abstracts to be used throughout the project
+@forward "abstracts/variables";
+@forward "abstracts/mixins";
+@forward "abstracts/functions";
+@forward "abstracts/animations";
+
+// We need to actually load the variables module to ensure CSS variables 
+// are generated in the output and mixins can access them
+@use "abstracts/variables" as *;
+@use "abstracts/mixins" as *;
+@use "abstracts/functions" as *;

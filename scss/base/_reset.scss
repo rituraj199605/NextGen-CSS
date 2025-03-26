@@ -1,0 +1,29 @@
+// NextGen Framework Reset
+@use '../index' as *;
+@use "../index" as *;
+
+// Box sizing
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+// Basic reset
+body, h1, h2, h3, h4, h5, h6, p, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+// Body basic styling
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  color: var(--ng-body-color);
+  background-color: var(--ng-body-bg);
+}
+
+// Basic heading styles
+h1 { font-size: $h1-font-size; }
+h2 { font-size: $h2-font-size; }
+h3 { font-size: $h3-font-size; }

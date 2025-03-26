@@ -1,0 +1,57 @@
+{
+  "name": "nextgen-css-framework",
+  "version": "1.0.0",
+  "description": "A modern, lightweight, and flexible CSS framework for next-generation websites",
+  "main": "dist/nextgen.css",
+  "style": "dist/nextgen.css",
+  "sass": "scss/main.scss",
+  "files": [
+    "dist/",
+    "scss/",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run build:scss && npm run build:minify",
+    "build:scss": "sass scss/main.scss:dist/nextgen.css --no-source-map",
+    "build:minify": "sass scss/main.scss:dist/nextgen.min.css --no-source-map --style=compressed",
+    "build:with-maps": "sass scss/main.scss:dist/nextgen.css --source-map && sass scss/main.scss:dist/nextgen.min.css --source-map --style=compressed",
+    "dev": "sass --watch scss/main.scss:dist/nextgen.css",
+    "lint": "stylelint \"scss/**/*.scss\"",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "scss",
+    "framework",
+    "frontend",
+    "responsive",
+    "ui",
+    "mobile-first",
+    "nextgen",
+    "design-system",
+    "flexbox",
+    "grid",
+    "css-variables"
+  ],
+  "author": "Ritu Raj Singh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rituraj199605/nextgen-css-framework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rituraj199605/nextgen-css-framework/issues"
+  },
+  "homepage": "https://github.com/rituraj199605/nextgen-css-framework#readme",
+  "devDependencies": {
+    "sass": "^1.69.5",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard-scss": "^11.1.0",
+    "stylelint-scss": "^5.2.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,108 @@
+// ====================================
+// NextGen Framework Containers
+// ====================================
+
+@use '../index' as *;
+@use 'sass:map';
+
+// Import breakpoints if not already defined
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+
+// Container max widths
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+) !default;
+
+// Define a mixin for media-breakpoint-up if not already defined
+@mixin media-breakpoint-up($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    $min-width: map.get($breakpoints, $breakpoint);
+    @media (min-width: $min-width) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint `#{$breakpoint}` in $breakpoints.";
+  }
+}
+
+// Base container
+// ------------------------------------
+.container {
+  width: 100%;
+  padding-right: var(--ng-container-padding-x, calc(#{$spacer * 1.5} / 2));
+  padding-left: var(--ng-container-padding-x, calc(#{$spacer * 1.5} / 2));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Fluid container (full width)
+.container-fluid {
+  width: 100%;
+  padding-right: var(--ng-container-padding-x, calc(#{$spacer * 1.5} / 2));
+  padding-left: var(--ng-container-padding-x, calc(#{$spacer * 1.5} / 2));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Responsive containers
+@each $breakpoint, $container-max-width in $container-max-widths {
+  .container-#{$breakpoint} {
+    @extend .container-fluid;
+  }
+
+  @include media-breakpoint-up($breakpoint) {
+    %responsive-container-#{$breakpoint} {
+      max-width: $container-max-width;
+    }
+
+    .container-#{$breakpoint},
+    .container {
+      @extend %responsive-container-#{$breakpoint};
+    }
+  }
+}
+
+// Skinny container (narrower than default container)
+.container-skinny {
+  @extend .container;
+  
+  @include media-breakpoint-up(sm) {
+    max-width: 95%;
+  }
+  
+  @include media-breakpoint-up(md) {
+    max-width: 85%;
+  }
+  
+  @include media-breakpoint-up(lg) {
+    max-width: 75%;
+  }
+  
+  @include media-breakpoint-up(xl) {
+    max-width: 65%;
+  }
+  
+  @include media-breakpoint-up(xxl) {
+    max-width: 60%;
+  }
+}
+
+// Content container (for text content)
+.container-content {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--ng-container-padding-x, calc(#{$spacer * 1.5} / 2));
+  padding-right: var(--ng-container-padding-x, calc(#{$spacer * 1.5} / 2));
+}

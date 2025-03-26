@@ -1,0 +1,163 @@
+// ====================================
+// NextGen Framework Grid System
+// ====================================
+
+@use '../index' as *;
+@use 'sass:math';
+@use 'sass:map';
+
+// Base grid values
+$grid-columns: 12 !default;
+$grid-gutter-width: $spacer * 1.5 !default;
+$grid-row-columns: 6 !default;
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+) !default;
+
+// Container
+// ------------------------------------
+.container,
+.container-fluid {
+  width: 100%;
+  padding-right: var(--ng-container-padding-x, calc(#{$grid-gutter-width} / 2));
+  padding-left: var(--ng-container-padding-x, calc(#{$grid-gutter-width} / 2));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Responsive containers
+@each $breakpoint, $container-max-width in $container-max-widths {
+  .container-#{$breakpoint} {
+    width: 100%;
+    padding-right: calc(#{$grid-gutter-width} / 2);
+    padding-left: calc(#{$grid-gutter-width} / 2);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media (min-width: map.get($breakpoints, $breakpoint)) {
+    .container-#{$breakpoint}, .container {
+      max-width: $container-max-width;
+    }
+  }
+}
+
+// Row
+// ------------------------------------
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(-#{$grid-gutter-width} / 2);
+  margin-left: calc(-#{$grid-gutter-width} / 2);
+}
+
+// No gutters
+.row-no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+  
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+// Define mixin for column styles instead of placeholder
+@mixin column-base {
+  position: relative;
+  width: 100%;
+  padding-right: calc(#{$grid-gutter-width} / 2);
+  padding-left: calc(#{$grid-gutter-width} / 2);
+}
+
+// Columns
+// ------------------------------------
+// Auto and flex columns
+.col {
+  @include column-base;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.col-auto {
+  @include column-base;
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 100%;
+}
+
+// Fixed width columns
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    @include column-base;
+    flex: 0 0 math.percentage(math.div($i, $grid-columns));
+    max-width: math.percentage(math.div($i, $grid-columns));
+  }
+}
+
+// Responsive columns
+@each $breakpoint, $min-width in $breakpoints {
+  @media (min-width: $min-width) {
+    // Auto columns
+    .col-#{$breakpoint} {
+      @include column-base;
+      flex-basis: 0;
+      flex-grow: 1;
+      max-width: 100%;
+    }
+    
+    .col-#{$breakpoint}-auto {
+      @include column-base;
+      flex: 0 0 auto;
+      width: auto;
+      max-width: 100%;
+    }
+    
+    // Fixed width columns
+    @for $i from 1 through $grid-columns {
+      .col-#{$breakpoint}-#{$i} {
+        @include column-base;
+        flex: 0 0 math.percentage(math.div($i, $grid-columns));
+        max-width: math.percentage(math.div($i, $grid-columns));
+      }
+    }
+  }
+}
+
+// Order utilities
+// ------------------------------------
+.order-first { order: -1; }
+.order-last { order: $grid-columns + 1; }
+
+@for $i from 0 through $grid-columns {
+  .order-#{$i} { order: $i; }
+}
+
+// Simple CSS Grid Layout Utilities
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: $grid-gutter-width;
+}
+
+// Grid gaps
+.grid-gap-0 { grid-gap: 0; }
+.grid-gap-1 { grid-gap: $spacer * 0.25; }
+.grid-gap-2 { grid-gap: $spacer * 0.5; }
+.grid-gap-3 { grid-gap: $spacer; }
+.grid-gap-4 { grid-gap: $spacer * 1.5; }
+.grid-gap-5 { grid-gap: $spacer * 3; }

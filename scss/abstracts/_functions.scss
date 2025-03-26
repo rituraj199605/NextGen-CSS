@@ -1,0 +1,152 @@
+// ====================================
+// NextGen Framework Functions
+// ====================================
+
+// Color contrast function
+// ------------------------------------
+// Returns either white or black based on contrast with background color
+@function color-contrast($background) {
+    $r: red($background);
+    $g: green($background);
+    $b: blue($background);
+    
+    // Calculate luminance using the relative luminance formula
+    $luminance: 0.2126 * $r / 255 + 0.7152 * $g / 255 + 0.0722 * $b / 255;
+    
+    @if ($luminance > 0.55) {
+      @return $black; // Dark text for light backgrounds
+    } @else {
+      @return $white; // Light text for dark backgrounds
+    }
+  }
+  
+  // Tint color
+  // ------------------------------------
+  // Lighten a color by mixing it with white
+  @function tint-color($color, $weight) {
+    @return mix(white, $color, $weight);
+  }
+  
+  // Shade color
+  // ------------------------------------
+  // Darken a color by mixing it with black
+  @function shade-color($color, $weight) {
+    @return mix(black, $color, $weight);
+  }
+  
+  // Relative luminance
+  // ------------------------------------
+  // Calculate the relative luminance of a color
+  @function luminance($color) {
+    $r: red($color) / 255;
+    $g: green($color) / 255;
+    $b: blue($color) / 255;
+    
+    $r: if($r <= 0.03928, $r / 12.92, pow(($r + 0.055) / 1.055, 2.4));
+    $g: if($g <= 0.03928, $g / 12.92, pow(($g + 0.055) / 1.055, 2.4));
+    $b: if($b <= 0.03928, $b / 12.92, pow(($b + 0.055) / 1.055, 2.4));
+    
+    @return 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
+  }
+  
+  // Contrast ratio
+  // ------------------------------------
+  // Calculate the contrast ratio between two colors
+  @function contrast-ratio($background, $foreground) {
+    $backgroundLum: luminance($background) + 0.05;
+    $foregroundLum: luminance($foreground) + 0.05;
+    
+    @return max($backgroundLum, $foregroundLum) / min($backgroundLum, $foregroundLum);
+  }
+  
+  // Hexadecimal to RGB
+  // ------------------------------------
+  // Convert hex color to RGB values
+  @function hex-to-rgb($color) {
+    @return red($color), green($color), blue($color);
+  }
+  
+  // Strip unit
+  // ------------------------------------
+  // Remove the unit from a number
+  @function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+      @return $number / ($number * 0 + 1);
+    }
+    @return $number;
+  }
+  
+  // To rem
+  // ------------------------------------
+  // Convert px to rem
+  @function to-rem($value, $base-value: 16px) {
+    $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+    @if ($value == 0rem) { $value: 0; } // Convert 0rem to 0
+    @return $value;
+  }
+  
+  // To em
+  // ------------------------------------
+  // Convert px to em
+  @function to-em($value, $base-value: 16px) {
+    $value: strip-unit($value) / strip-unit($base-value) * 1em;
+    @if ($value == 0em) { $value: 0; } // Convert 0em to 0
+    @return $value;
+  }
+  
+  // Get breakpoint
+  // ------------------------------------
+  // Get a breakpoint value from the breakpoints map
+  @function get-breakpoint($key) {
+    @if map-has-key($breakpoints, $key) {
+      @return map-get($breakpoints, $key);
+    } @else {
+      @error "Unknown breakpoint `#{$key}` in $breakpoints.";
+      @return null;
+    }
+  }
+  
+  // Z-index
+  // ------------------------------------
+  // Get a z-index value
+  @function z-index($key) {
+    @if variable-exists(z-index-#{$key}) {
+      @return var(--ng-z-index-#{$key});
+    } @else {
+      @error "Unknown z-index `#{$key}`.";
+      @return null;
+    }
+  }
+  
+  // Get color
+  // ------------------------------------
+  // Get a color from the color system
+  @function get-color($color, $shade: null) {
+    @if $shade {
+      @if variable-exists(#{$color}-#{$shade}) {
+        @return var(--ng-#{$color}-#{$shade});
+      } @else {
+        @error "Unknown color shade `#{$shade}` for color `#{$color}`.";
+        @return null;
+      }
+    } @else {
+      @if variable-exists(#{$color}) {
+        @return var(--ng-#{$color});
+      } @else {
+        @error "Unknown color `#{$color}`.";
+        @return null;
+      }
+    }
+  }
+  
+  // Get spacer
+  // ------------------------------------
+  // Get a spacer value from the spacers map
+  @function get-spacer($key) {
+    @if map-has-key($spacers, $key) {
+      @return map-get($spacers, $key);
+    } @else {
+      @error "Unknown spacer `#{$key}` in $spacers.";
+      @return null;
+    }
+  }

@@ -1,0 +1,136 @@
+// ====================================
+// NextGen Framework Spacing Utilities
+// ====================================
+
+// Margin
+// ------------------------------------
+@use '../index' as *;
+@use "sass:map";
+
+.m-0  { margin: 0 !important; }
+.mt-0 { margin-top: 0 !important; }
+.mr-0 { margin-right: 0 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.ml-0 { margin-left: 0 !important; }
+.mx-0 {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+.my-0 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+@each $key, $value in $spacers {
+  @if $key != 0 {
+    .m-#{$key}  { margin: $value !important; }
+    .mt-#{$key} { margin-top: $value !important; }
+    .mr-#{$key} { margin-right: $value !important; }
+    .mb-#{$key} { margin-bottom: $value !important; }
+    .ml-#{$key} { margin-left: $value !important; }
+    .mx-#{$key} {
+      margin-right: $value !important;
+      margin-left: $value !important;
+    }
+    .my-#{$key} {
+      margin-top: $value !important;
+      margin-bottom: $value !important;
+    }
+  }
+}
+
+// Negative margins
+@each $key, $value in $spacers {
+  @if $key != 0 {
+    .m-n#{$key}  { margin: -$value !important; }
+    .mt-n#{$key} { margin-top: -$value !important; }
+    .mr-n#{$key} { margin-right: -$value !important; }
+    .mb-n#{$key} { margin-bottom: -$value !important; }
+    .ml-n#{$key} { margin-left: -$value !important; }
+    .mx-n#{$key} {
+      margin-right: -$value !important;
+      margin-left: -$value !important;
+    }
+    .my-n#{$key} {
+      margin-top: -$value !important;
+      margin-bottom: -$value !important;
+    }
+  }
+}
+
+// Auto margins
+.m-auto  { margin: auto !important; }
+.mt-auto { margin-top: auto !important; }
+.mr-auto { margin-right: auto !important; }
+.mb-auto { margin-bottom: auto !important; }
+.ml-auto { margin-left: auto !important; }
+.mx-auto {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+.my-auto {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+// Padding
+// ------------------------------------
+.p-0  { padding: 0 !important; }
+.pt-0 { padding-top: 0 !important; }
+.pr-0 { padding-right: 0 !important; }
+.pb-0 { padding-bottom: 0 !important; }
+.pl-0 { padding-left: 0 !important; }
+.px-0 {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+.py-0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+@each $key, $value in $spacers {
+  @if $key != 0 {
+    .p-#{$key}  { padding: $value !important; }
+    .pt-#{$key} { padding-top: $value !important; }
+    .pr-#{$key} { padding-right: $value !important; }
+    .pb-#{$key} { padding-bottom: $value !important; }
+    .pl-#{$key} { padding-left: $value !important; }
+    .px-#{$key} {
+      padding-right: $value !important;
+      padding-left: $value !important;
+    }
+    .py-#{$key} {
+      padding-top: $value !important;
+      padding-bottom: $value !important;
+    }
+  }
+}
+
+// Gap
+// ------------------------------------
+.gap-0 { gap: 0 !important; }
+.gap-row-0 { row-gap: 0 !important; }
+.gap-col-0 { column-gap: 0 !important; }
+
+@each $key, $value in $spacers {
+  @if $key != 0 {
+    .gap-#{$key} { gap: $value !important; }
+    .gap-row-#{$key} { row-gap: $value !important; }
+    .gap-col-#{$key} { column-gap: $value !important; }
+  }
+}
+
+// Spacer helpers
+// ------------------------------------
+.spacer-y-1 > * + * { margin-top: map.get($spacers, 1) !important; }
+.spacer-y-2 > * + * { margin-top: map.get($spacers, 2) !important; }
+.spacer-y-3 > * + * { margin-top: map.get($spacers, 3) !important; }
+.spacer-y-4 > * + * { margin-top: map.get($spacers, 4) !important; }
+.spacer-y-5 > * + * { margin-top: map.get($spacers, 5) !important; }
+
+.spacer-x-1 > * + * { margin-left: map.get($spacers, 1) !important; }
+.spacer-x-2 > * + * { margin-left: map.get($spacers, 2) !important; }
+.spacer-x-3 > * + * { margin-left: map.get($spacers, 3) !important; }
+.spacer-x-4 > * + * { margin-left: map.get($spacers, 4) !important; }
+.spacer-x-5 > * + * { margin-left: map.get($spacers, 5) !important; }

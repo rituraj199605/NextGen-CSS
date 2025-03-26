@@ -1,0 +1,295 @@
+// ====================================
+// NextGen Framework Color Utilities
+// ====================================
+
+// Text colors
+// ------------------------------------
+@use '../index' as *;
+@use "sass:color";
+
+.text-primary {
+    color: var(--ng-primary) !important;
+  }
+  
+  .text-secondary {
+    color: var(--ng-secondary) !important;
+  }
+  
+  .text-success {
+    color: var(--ng-success) !important;
+  }
+  
+  .text-info {
+    color: var(--ng-info) !important;
+  }
+  
+  .text-warning {
+    color: var(--ng-warning) !important;
+  }
+  
+  .text-danger {
+    color: var(--ng-danger) !important;
+  }
+  
+  .text-light {
+    color: var(--ng-light) !important;
+  }
+  
+  .text-dark {
+    color: var(--ng-dark) !important;
+  }
+  
+  .text-white {
+    color: var(--ng-white) !important;
+  }
+  
+  .text-black {
+    color: var(--ng-black) !important;
+  }
+  
+  // Gray text colors
+  .text-gray-100 { color: var(--ng-gray-100) !important; }
+  .text-gray-200 { color: var(--ng-gray-200) !important; }
+  .text-gray-300 { color: var(--ng-gray-300) !important; }
+  .text-gray-400 { color: var(--ng-gray-400) !important; }
+  .text-gray-500 { color: var(--ng-gray-500) !important; }
+  .text-gray-600 { color: var(--ng-gray-600) !important; }
+  .text-gray-700 { color: var(--ng-gray-700) !important; }
+  .text-gray-800 { color: var(--ng-gray-800) !important; }
+  .text-gray-900 { color: var(--ng-gray-900) !important; }
+  
+  // Text opacity
+  .text-opacity-25 { opacity: 0.25 !important; }
+  .text-opacity-50 { opacity: 0.5 !important; }
+  .text-opacity-75 { opacity: 0.75 !important; }
+  .text-opacity-100 { opacity: 1 !important; }
+  
+  // Background colors
+  // ------------------------------------
+  .bg-primary {
+    background-color: var(--ng-primary) !important;
+  }
+  
+  .bg-secondary {
+    background-color: var(--ng-secondary) !important;
+  }
+  
+  .bg-success {
+    background-color: var(--ng-success) !important;
+  }
+  
+  .bg-info {
+    background-color: var(--ng-info) !important;
+  }
+  
+  .bg-warning {
+    background-color: var(--ng-warning) !important;
+  }
+  
+  .bg-danger {
+    background-color: var(--ng-danger) !important;
+  }
+  
+  .bg-light {
+    background-color: var(--ng-light) !important;
+  }
+  
+  .bg-dark {
+    background-color: var(--ng-dark) !important;
+  }
+  
+  .bg-white {
+    background-color: var(--ng-white) !important;
+  }
+  
+  .bg-black {
+    background-color: var(--ng-black) !important;
+  }
+  
+  .bg-transparent {
+    background-color: transparent !important;
+  }
+  
+  // Gray background colors
+  .bg-gray-100 { background-color: var(--ng-gray-100) !important; }
+  .bg-gray-200 { background-color: var(--ng-gray-200) !important; }
+  .bg-gray-300 { background-color: var(--ng-gray-300) !important; }
+  .bg-gray-400 { background-color: var(--ng-gray-400) !important; }
+  .bg-gray-500 { background-color: var(--ng-gray-500) !important; }
+  .bg-gray-600 { background-color: var(--ng-gray-600) !important; }
+  .bg-gray-700 { background-color: var(--ng-gray-700) !important; }
+  .bg-gray-800 { background-color: var(--ng-gray-800) !important; }
+  .bg-gray-900 { background-color: var(--ng-gray-900) !important; }
+  
+  // Background opacity
+  .bg-opacity-10 { --ng-bg-opacity: 0.1; }
+  .bg-opacity-25 { --ng-bg-opacity: 0.25; }
+  .bg-opacity-50 { --ng-bg-opacity: 0.5; }
+  .bg-opacity-75 { --ng-bg-opacity: 0.75; }
+  .bg-opacity-100 { --ng-bg-opacity: 1; }
+  
+  // Apply background opacity
+  [class*="bg-"] {
+    background-color: rgba(var(--ng-bg-rgb, 255, 255, 255), var(--ng-bg-opacity, 1)) !important;
+  }
+  
+  // Gradient backgrounds
+  .bg-gradient {
+    background-image: linear-gradient(180deg, rgba(white, 0.15), rgba(white, 0)) !important;
+  }
+  
+  .bg-gradient-primary {
+    background: linear-gradient(45deg, var(--ng-primary), color.adjust($primary, $lightness: 15%)) !important;
+    color: var(--ng-white);
+  }
+  
+  .bg-gradient-secondary {
+    background: linear-gradient(45deg, var(--ng-secondary), color.adjust($secondary, $lightness: 15%)) !important;
+    color: var(--ng-white);
+  }
+  
+  .bg-gradient-success {
+    background: linear-gradient(45deg, var(--ng-success), color.adjust($success, $lightness: 15%)) !important;
+    color: var(--ng-white);
+  }
+  
+  .bg-gradient-info {
+    background: linear-gradient(45deg, var(--ng-info), color.adjust($info, $lightness: 15%)) !important;
+    color: var(--ng-white);
+  }
+  
+  .bg-gradient-warning {
+    background: linear-gradient(45deg, var(--ng-warning), color.adjust($warning, $lightness: 15%)) !important;
+    color: var(--ng-black);
+  }
+  
+  .bg-gradient-danger {
+    background: linear-gradient(45deg, var(--ng-danger), color.adjust($danger, $lightness: 15%)) !important;
+    color: var(--ng-white);
+  }
+  
+  .bg-gradient-light {
+    background: linear-gradient(45deg, var(--ng-light), white) !important;
+    color: var(--ng-dark);
+  }
+  
+  .bg-gradient-dark {
+    background: linear-gradient(45deg, var(--ng-dark), color.adjust($dark, $lightness: 15%)) !important;
+    color: var(--ng-white);
+  }
+  
+  // Border colors
+  // ------------------------------------
+  .border-primary {
+    border-color: var(--ng-primary) !important;
+  }
+  
+  .border-secondary {
+    border-color: var(--ng-secondary) !important;
+  }
+  
+  .border-success {
+    border-color: var(--ng-success) !important;
+  }
+  
+  .border-info {
+    border-color: var(--ng-info) !important;
+  }
+  
+  .border-warning {
+    border-color: var(--ng-warning) !important;
+  }
+  
+  .border-danger {
+    border-color: var(--ng-danger) !important;
+  }
+  
+  .border-light {
+    border-color: var(--ng-light) !important;
+  }
+  
+  .border-dark {
+    border-color: var(--ng-dark) !important;
+  }
+  
+  .border-white {
+    border-color: var(--ng-white) !important;
+  }
+  
+  .border-black {
+    border-color: var(--ng-black) !important;
+  }
+  
+  // Gray border colors
+  .border-gray-100 { border-color: var(--ng-gray-100) !important; }
+  .border-gray-200 { border-color: var(--ng-gray-200) !important; }
+  .border-gray-300 { border-color: var(--ng-gray-300) !important; }
+  .border-gray-400 { border-color: var(--ng-gray-400) !important; }
+  .border-gray-500 { border-color: var(--ng-gray-500) !important; }
+  .border-gray-600 { border-color: var(--ng-gray-600) !important; }
+  .border-gray-700 { border-color: var(--ng-gray-700) !important; }
+  .border-gray-800 { border-color: var(--ng-gray-800) !important; }
+  .border-gray-900 { border-color: var(--ng-gray-900) !important; }
+  
+  // Border width
+  .border-0 { border: 0 !important; }
+  .border-1 { border-width: 1px !important; }
+  .border-2 { border-width: 2px !important; }
+  .border-3 { border-width: 3px !important; }
+  .border-4 { border-width: 4px !important; }
+  .border-5 { border-width: 5px !important; }
+  
+  .border-top-0 { border-top: 0 !important; }
+  .border-end-0 { border-right: 0 !important; }
+  .border-bottom-0 { border-bottom: 0 !important; }
+  .border-start-0 { border-left: 0 !important; }
+  
+  .border { border: $border-width solid var(--ng-border-color) !important; }
+  .border-top { border-top: $border-width solid var(--ng-border-color) !important; }
+  .border-end { border-right: $border-width solid var(--ng-border-color) !important; }
+  .border-bottom { border-bottom: $border-width solid var(--ng-border-color) !important; }
+  .border-start { border-left: $border-width solid var(--ng-border-color) !important; }
+  
+  // Border style
+  .border-solid { border-style: solid !important; }
+  .border-dashed { border-style: dashed !important; }
+  .border-dotted { border-style: dotted !important; }
+  .border-double { border-style: double !important; }
+  .border-hidden { border-style: hidden !important; }
+  .border-none { border-style: none !important; }
+  
+  // Border radius
+  .rounded-0 { border-radius: 0 !important; }
+  .rounded-1 { border-radius: $border-radius-sm !important; }
+  .rounded-2 { border-radius: $border-radius !important; }
+  .rounded-3 { border-radius: $border-radius-lg !important; }
+  .rounded-4 { border-radius: $border-radius-xl !important; }
+  .rounded-pill { border-radius: $border-radius-pill !important; }
+  .rounded-circle { border-radius: 50% !important; }
+  
+  .rounded-top {
+    border-top-left-radius: $border-radius !important;
+    border-top-right-radius: $border-radius !important;
+  }
+  
+  .rounded-end {
+    border-top-right-radius: $border-radius !important;
+    border-bottom-right-radius: $border-radius !important;
+  }
+  
+  .rounded-bottom {
+    border-bottom-right-radius: $border-radius !important;
+    border-bottom-left-radius: $border-radius !important;
+  }
+  
+  .rounded-start {
+    border-top-left-radius: $border-radius !important;
+    border-bottom-left-radius: $border-radius !important;
+  }
+  
+  // Box shadow
+  .shadow-none { box-shadow: none !important; }
+  .shadow-sm { box-shadow: $box-shadow-sm !important; }
+  .shadow { box-shadow: $box-shadow !important; }
+  .shadow-lg { box-shadow: $box-shadow-lg !important; }
+  .shadow-xl { box-shadow: $box-shadow-xl !important; }

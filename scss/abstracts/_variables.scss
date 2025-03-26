@@ -1,0 +1,144 @@
+// Basic variables for NextGen Framework
+@use "sass:color";
+
+// Main colors
+$primary: #3b82f6;
+$secondary: #64748b;
+$success: #10b981;
+$info: #06b6d4;
+$warning: #f59e0b;
+$danger: #ef4444;
+$light: #f8fafc;
+$dark: #0f172a;
+
+// Neutral colors
+$white: #ffffff;
+$black: #020617;
+$gray-100: #f1f5f9;
+$gray-200: #e2e8f0;
+$gray-300: #cbd5e1;
+$gray-400: #94a3b8;
+$gray-500: #64748b;
+$gray-600: #475569;
+$gray-700: #334155;
+$gray-800: #1e293b;
+$gray-900: #0f172a;
+
+// Typography
+$font-family-base: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+$font-family-monospace: 'Roboto Mono', monospace;
+
+$font-size-base: 1rem;
+$font-size-sm: $font-size-base * 0.875;
+$font-size-lg: $font-size-base * 1.125;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-base: 1.5;
+$line-height-sm: 1.25;
+$line-height-lg: 2;
+
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.25;
+$h6-font-size: $font-size-base;
+
+// Spacing
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25, // 4px
+  2: $spacer * 0.5,  // 8px
+  3: $spacer,        // 16px
+  4: $spacer * 1.5,  // 24px
+  5: $spacer * 3     // 48px
+) !default;
+
+// Breakpoints
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// Border
+$border-width: 1px;
+$border-radius: 0.375rem;
+$border-radius-sm: 0.25rem;
+$border-radius-lg: 0.5rem;
+$border-radius-xl: 0.75rem;
+$border-radius-pill: 50rem;
+
+// Links
+$link-color: $primary;
+$link-hover-color: color.adjust($link-color, $lightness: -15%);
+$link-hover-decoration: none;
+
+// Transitions
+$transition-base: all 0.2s ease-in-out;
+$transition-fade: opacity 0.15s linear;
+
+// Box Shadow
+$box-shadow-sm: 0 1px 2px 0 rgba($black, 0.05) !default;
+$box-shadow: 0 1px 3px 0 rgba($black, 0.1), 0 1px 2px -1px rgba($black, 0.1) !default;
+$box-shadow-lg: 0 10px 15px -3px rgba($black, 0.1), 0 4px 6px -4px rgba($black, 0.1) !default;
+$box-shadow-xl: 0 20px 25px -5px rgba($black, 0.1), 0 8px 10px -6px rgba($black, 0.1) !default;
+
+// Z-index
+$z-index-dropdown: 1000 !default;
+$z-index-sticky: 1020 !default;
+$z-index-fixed: 1030 !default;
+$z-index-modal: 1050 !default;
+$z-index-popover: 1060 !default;
+$z-index-tooltip: 1070 !default;
+
+// Export CSS Variables
+:root {
+  --ng-primary: #{$primary};
+  --ng-secondary: #{$secondary};
+  --ng-success: #{$success};
+  --ng-info: #{$info};
+  --ng-warning: #{$warning};
+  --ng-danger: #{$danger};
+  --ng-light: #{$light};
+  --ng-dark: #{$dark};
+  
+  --ng-white: #{$white};
+  --ng-gray-100: #{$gray-100};
+  --ng-gray-200: #{$gray-200};
+  --ng-gray-300: #{$gray-300};
+  --ng-gray-400: #{$gray-400};
+  --ng-gray-500: #{$gray-500};
+  --ng-gray-600: #{$gray-600};
+  --ng-gray-700: #{$gray-700};
+  --ng-gray-800: #{$gray-800};
+  --ng-gray-900: #{$gray-900};
+  --ng-black: #{$black};
+  
+  --ng-body-bg: #{$white};
+  --ng-body-color: #{$gray-900};
+  --ng-link-color: #{$link-color};
+  --ng-link-hover-color: #{$link-hover-color};
+  --ng-border-color: #{$gray-300};
+}
+
+// Dark mode
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ng-primary: #{color.adjust($primary, $lightness: 10%)};
+    --ng-body-bg: #{$gray-900};
+    --ng-body-color: #{$gray-100};
+    --ng-border-color: #{$gray-700};
+    --ng-link-color: #{color.adjust($primary, $lightness: 15%)};
+    --ng-link-hover-color: #{color.adjust($primary, $lightness: 25%)};
+  }
+}

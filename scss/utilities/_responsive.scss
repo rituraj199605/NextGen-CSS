@@ -1,0 +1,286 @@
+// ====================================
+// NextGen Framework Responsive Utilities
+// ====================================
+
+// Import required modules
+@use 'sass:map';
+@use '../index' as *;
+
+// Responsive display utilities
+// ------------------------------------
+@each $breakpoint in map.keys($breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: if($breakpoint == 'xs', '', '-#{$breakpoint}');
+      
+      .d#{$infix}-none           { display: none !important; }
+      .d#{$infix}-inline         { display: inline !important; }
+      .d#{$infix}-inline-block   { display: inline-block !important; }
+      .d#{$infix}-block          { display: block !important; }
+      .d#{$infix}-table          { display: table !important; }
+      .d#{$infix}-table-row      { display: table-row !important; }
+      .d#{$infix}-table-cell     { display: table-cell !important; }
+      .d#{$infix}-flex           { display: flex !important; }
+      .d#{$infix}-inline-flex    { display: inline-flex !important; }
+      .d#{$infix}-grid           { display: grid !important; }
+      .d#{$infix}-inline-grid    { display: inline-grid !important; }
+    }
+  }
+  
+  // Responsive flex utilities
+  // ------------------------------------
+  @each $breakpoint in map.keys($breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: if($breakpoint == 'xs', '', '-#{$breakpoint}');
+      
+      // Direction
+      .flex#{$infix}-row             { flex-direction: row !important; }
+      .flex#{$infix}-column          { flex-direction: column !important; }
+      .flex#{$infix}-row-reverse     { flex-direction: row-reverse !important; }
+      .flex#{$infix}-column-reverse  { flex-direction: column-reverse !important; }
+      
+      // Wrap
+      .flex#{$infix}-wrap            { flex-wrap: wrap !important; }
+      .flex#{$infix}-nowrap          { flex-wrap: nowrap !important; }
+      .flex#{$infix}-wrap-reverse    { flex-wrap: wrap-reverse !important; }
+      
+      // Justify content
+      .justify-content#{$infix}-start    { justify-content: flex-start !important; }
+      .justify-content#{$infix}-end      { justify-content: flex-end !important; }
+      .justify-content#{$infix}-center   { justify-content: center !important; }
+      .justify-content#{$infix}-between  { justify-content: space-between !important; }
+      .justify-content#{$infix}-around   { justify-content: space-around !important; }
+      .justify-content#{$infix}-evenly   { justify-content: space-evenly !important; }
+      
+      // Align items
+      .align-items#{$infix}-start    { align-items: flex-start !important; }
+      .align-items#{$infix}-end      { align-items: flex-end !important; }
+      .align-items#{$infix}-center   { align-items: center !important; }
+      .align-items#{$infix}-baseline { align-items: baseline !important; }
+      .align-items#{$infix}-stretch  { align-items: stretch !important; }
+      
+      // Align self
+      .align-self#{$infix}-start     { align-self: flex-start !important; }
+      .align-self#{$infix}-end       { align-self: flex-end !important; }
+      .align-self#{$infix}-center    { align-self: center !important; }
+      .align-self#{$infix}-baseline  { align-self: baseline !important; }
+      .align-self#{$infix}-stretch   { align-self: stretch !important; }
+      
+      // Align content
+      .align-content#{$infix}-start      { align-content: flex-start !important; }
+      .align-content#{$infix}-end        { align-content: flex-end !important; }
+      .align-content#{$infix}-center     { align-content: center !important; }
+      .align-content#{$infix}-between    { align-content: space-between !important; }
+      .align-content#{$infix}-around     { align-content: space-around !important; }
+      .align-content#{$infix}-stretch    { align-content: stretch !important; }
+      
+      // Flex grow and shrink
+      .flex#{$infix}-grow-0     { flex-grow: 0 !important; }
+      .flex#{$infix}-grow-1     { flex-grow: 1 !important; }
+      .flex#{$infix}-shrink-0   { flex-shrink: 0 !important; }
+      .flex#{$infix}-shrink-1   { flex-shrink: 1 !important; }
+    }
+  }
+  
+  // Responsive text utilities
+  // ------------------------------------
+  @each $breakpoint in map.keys($breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: if($breakpoint == 'xs', '', '-#{$breakpoint}');
+      
+      // Text alignment
+      .text#{$infix}-left      { text-align: left !important; }
+      .text#{$infix}-right     { text-align: right !important; }
+      .text#{$infix}-center    { text-align: center !important; }
+      .text#{$infix}-justify   { text-align: justify !important; }
+      
+      // Text wrapping
+      .text#{$infix}-nowrap    { white-space: nowrap !important; }
+      .text#{$infix}-truncate  { @include text-truncate; }
+    }
+  }
+  
+  // Responsive position utilities
+  // ------------------------------------
+  @each $breakpoint in map.keys($breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: if($breakpoint == 'xs', '', '-#{$breakpoint}');
+      
+      .position#{$infix}-static     { position: static !important; }
+      .position#{$infix}-relative   { position: relative !important; }
+      .position#{$infix}-absolute   { position: absolute !important; }
+      .position#{$infix}-fixed      { position: fixed !important; }
+      .position#{$infix}-sticky     { position: sticky !important; }
+    }
+  }
+  
+  // Responsive gap utilities
+  // ------------------------------------
+  @each $breakpoint in map.keys($breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: if($breakpoint == 'xs', '', '-#{$breakpoint}');
+      
+      @each $key, $value in $spacers {
+        .gap#{$infix}-#{$key} {
+          gap: $value !important;
+        }
+        
+        .column-gap#{$infix}-#{$key} {
+          column-gap: $value !important;
+        }
+        
+        .row-gap#{$infix}-#{$key} {
+          row-gap: $value !important;
+        }
+      }
+    }
+  }
+  
+  // Responsive width and height utilities
+  // ------------------------------------
+  @each $breakpoint in map.keys($breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: if($breakpoint == 'xs', '', '-#{$breakpoint}');
+      
+      // Width
+      .w#{$infix}-auto         { width: auto !important; }
+      .w#{$infix}-25           { width: 25% !important; }
+      .w#{$infix}-50           { width: 50% !important; }
+      .w#{$infix}-75           { width: 75% !important; }
+      .w#{$infix}-100          { width: 100% !important; }
+      .w#{$infix}-fit          { width: fit-content !important; }
+      .w#{$infix}-max          { width: max-content !important; }
+      .w#{$infix}-min          { width: min-content !important; }
+      .w#{$infix}-vh-100       { width: 100vh !important; }
+      .mw#{$infix}-100         { max-width: 100% !important; }
+      .vw#{$infix}-100         { width: 100vw !important; }
+      
+      // Height
+      .h#{$infix}-auto         { height: auto !important; }
+      .h#{$infix}-25           { height: 25% !important; }
+      .h#{$infix}-50           { height: 50% !important; }
+      .h#{$infix}-75           { height: 75% !important; }
+      .h#{$infix}-100          { height: 100% !important; }
+      .h#{$infix}-fit          { height: fit-content !important; }
+      .h#{$infix}-max          { height: max-content !important; }
+      .h#{$infix}-min          { height: min-content !important; }
+      .h#{$infix}-vw-100       { height: 100vw !important; }
+      .mh#{$infix}-100         { max-height: 100% !important; }
+      .vh#{$infix}-100         { height: 100vh !important; }
+    }
+  }
+  
+  // Responsive margin and padding utilities
+  // ------------------------------------
+  @each $breakpoint in map.keys($breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: if($breakpoint == 'xs', '', '-#{$breakpoint}');
+      
+      @each $key, $value in $spacers {
+        // Margin utilities
+        .m#{$infix}-#{$key}      { margin: $value !important; }
+        .mt#{$infix}-#{$key}     { margin-top: $value !important; }
+        .mr#{$infix}-#{$key}     { margin-right: $value !important; }
+        .mb#{$infix}-#{$key}     { margin-bottom: $value !important; }
+        .ml#{$infix}-#{$key}     { margin-left: $value !important; }
+        .mx#{$infix}-#{$key} {
+          margin-right: $value !important;
+          margin-left: $value !important;
+        }
+        .my#{$infix}-#{$key} {
+          margin-top: $value !important;
+          margin-bottom: $value !important;
+        }
+        .m#{$infix}-n#{$key}     { margin: -$value !important; }
+        .mt#{$infix}-n#{$key}    { margin-top: -$value !important; }
+        .mr#{$infix}-n#{$key}    { margin-right: -$value !important; }
+        .mb#{$infix}-n#{$key}    { margin-bottom: -$value !important; }
+        .ml#{$infix}-n#{$key}    { margin-left: -$value !important; }
+        .mx#{$infix}-n#{$key} {
+          margin-right: -$value !important;
+          margin-left: -$value !important;
+        }
+        .my#{$infix}-n#{$key} {
+          margin-top: -$value !important;
+          margin-bottom: -$value !important;
+        }
+        
+        // Padding utilities
+        .p#{$infix}-#{$key}      { padding: $value !important; }
+        .pt#{$infix}-#{$key}     { padding-top: $value !important; }
+        .pr#{$infix}-#{$key}     { padding-right: $value !important; }
+        .pb#{$infix}-#{$key}     { padding-bottom: $value !important; }
+        .pl#{$infix}-#{$key}     { padding-left: $value !important; }
+        .px#{$infix}-#{$key} {
+          padding-right: $value !important;
+          padding-left: $value !important;
+        }
+        .py#{$infix}-#{$key} {
+          padding-top: $value !important;
+          padding-bottom: $value !important;
+        }
+      }
+      
+      // Auto margins
+      .m#{$infix}-auto      { margin: auto !important; }
+      .mt#{$infix}-auto     { margin-top: auto !important; }
+      .mr#{$infix}-auto     { margin-right: auto !important; }
+      .mb#{$infix}-auto     { margin-bottom: auto !important; }
+      .ml#{$infix}-auto     { margin-left: auto !important; }
+      .mx#{$infix}-auto {
+        margin-right: auto !important;
+        margin-left: auto !important;
+      }
+      .my#{$infix}-auto {
+        margin-top: auto !important;
+        margin-bottom: auto !important;
+      }
+    }
+  }
+  
+  // Responsive visibility utilities
+  // ------------------------------------
+  .visible {
+    visibility: visible !important;
+  }
+  
+  .invisible {
+    visibility: hidden !important;
+  }
+  
+  @each $breakpoint in map.keys($breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: if($breakpoint == 'xs', '', '-#{$breakpoint}');
+      .visible#{$infix}  { visibility: visible !important; }
+      .invisible#{$infix} { visibility: hidden !important; }
+      .opacity#{$infix}-0 { opacity: 0 !important; }
+      .opacity#{$infix}-25 { opacity: 0.25 !important; }
+      .opacity#{$infix}-50 { opacity: 0.5 !important; }
+      .opacity#{$infix}-75 { opacity: 0.75 !important; }
+      .opacity#{$infix}-100 { opacity: 1 !important; }
+    }
+  }
+  
+  // Hide content
+  // Only display content to screen readers
+  .sr-only {
+    @include visually-hidden;
+  }
+  
+  // Use in conjunction with .sr-only to only display content when it's focused
+  .sr-only-focusable {
+    @include sr-only-focusable;
+  }
+  
+  // Print classes
+  // ------------------------------------
+  @media print {
+    .d-print-none    { display: none !important; }
+    .d-print-inline  { display: inline !important; }
+    .d-print-inline-block { display: inline-block !important; }
+    .d-print-block   { display: block !important; }
+    .d-print-table   { display: table !important; }
+    .d-print-table-row { display: table-row !important; }
+    .d-print-table-cell { display: table-cell !important; }
+    .d-print-flex    { display: flex !important; }
+    .d-print-inline-flex { display: inline-flex !important; }
+  }

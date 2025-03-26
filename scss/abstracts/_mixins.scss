@@ -1,0 +1,252 @@
+// ====================================
+// NextGen Framework Mixins
+// ====================================
+
+@use 'sass:map';
+@use 'sass:color';
+@use 'sass:math';
+@use 'variables' as *;
+
+// Responsive Breakpoints
+// ------------------------------------
+@mixin media-breakpoint-up($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    $min-width: map.get($breakpoints, $breakpoint);
+    @media (min-width: $min-width) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint `#{$breakpoint}` in $breakpoints.";
+  }
+}
+
+@mixin media-breakpoint-down($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    $max-width: map.get($breakpoints, $breakpoint) - 0.02;
+    @media (max-width: $max-width) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint `#{$breakpoint}` in $breakpoints.";
+  }
+}
+
+@mixin media-breakpoint-between($lower, $upper) {
+  @if map.has-key($breakpoints, $lower) and map.has-key($breakpoints, $upper) {
+    $min-width: map.get($breakpoints, $lower);
+    $max-width: map.get($breakpoints, $upper) - 0.02;
+    @media (min-width: $min-width) and (max-width: $max-width) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint `#{$lower}` or `#{$upper}` in $breakpoints.";
+  }
+}
+
+// Typography
+// ------------------------------------
+@mixin font-size($size, $line-height: null) {
+  font-size: $size;
+  @if $line-height {
+    line-height: $line-height;
+  }
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Flexbox
+// ------------------------------------
+@mixin flex($grow: 0, $shrink: 1, $basis: auto) {
+  flex: $grow $shrink $basis;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Box Shadow
+// ------------------------------------
+@mixin shadow($shadow...) {
+  box-shadow: $shadow;
+}
+
+@mixin shadow-hover {
+  transition: box-shadow 0.3s ease;
+  &:hover {
+    @include shadow($box-shadow-lg);
+  }
+}
+
+@mixin box-shadow($shadow...) {
+  box-shadow: $shadow;
+}
+
+// Transitions
+// ------------------------------------
+@mixin transition($transition...) {
+  transition: $transition;
+}
+
+@mixin transition-all($duration: 0.2s, $timing-function: ease-in-out) {
+  transition: all $duration $timing-function;
+}
+
+// Buttons
+// ------------------------------------
+@mixin button-variant($background, $border, $color) {
+  background-color: $background;
+  border-color: $border;
+  color: $color;
+  
+  &:hover {
+    background-color: color.adjust($background, $lightness: -7.5%);
+    border-color: color.adjust($border, $lightness: -10%);
+  }
+  
+  &:focus, &:active {
+    background-color: color.adjust($background, $lightness: -10%);
+    border-color: color.adjust($border, $lightness: -12.5%);
+    box-shadow: 0 0 0 0.25rem rgba($background, 0.25);
+  }
+  
+  &:disabled {
+    background-color: color.adjust($background, $lightness: 15%);
+    border-color: color.adjust($border, $lightness: 15%);
+    color: rgba($color, 0.65);
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-outline-variant($color) {
+  background-color: transparent;
+  border-color: $color;
+  color: $color;
+  
+  &:hover {
+    background-color: $color;
+    color: if(color.blackness($color) > 50%, white, black);
+  }
+  
+  &:focus, &:active {
+    background-color: $color;
+    color: if(color.blackness($color) > 50%, white, black);
+    box-shadow: 0 0 0 0.25rem rgba($color, 0.25);
+  }
+  
+  &:disabled {
+    background-color: transparent;
+    border-color: color.adjust($color, $lightness: 15%);
+    color: color.adjust($color, $lightness: 15%);
+    cursor: not-allowed;
+  }
+}
+
+// Accessibility
+// ------------------------------------
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@mixin sr-only {
+  @include visually-hidden;
+}
+
+@mixin sr-only-focusable {
+  @include visually-hidden;
+  
+  &:active,
+  &:focus {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+  }
+}
+
+// Hover effects
+// ------------------------------------
+@mixin hover {
+  &:hover {
+    @content;
+  }
+}
+
+@mixin hover-focus {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+// Border radius
+// ------------------------------------
+@mixin border-radius($radius: $border-radius) {
+  border-radius: $radius;
+}
+
+@mixin border-top-radius($radius: $border-radius) {
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin border-bottom-radius($radius: $border-radius) {
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin border-start-radius($radius: $border-radius) {
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin border-end-radius($radius: $border-radius) {
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+// Gradients
+// ------------------------------------
+@mixin gradient-bg($color) {
+  background: $color linear-gradient(180deg, mix(#fff, $color, 15%), $color) repeat-x;
+}
+
+// Grid
+// ------------------------------------
+@mixin make-row($gutter: 1.5rem) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$gutter / 2;
+  margin-left: -$gutter / 2;
+}
+
+@mixin make-col($size, $columns: 12) {
+  flex: 0 0 percentage(math.div($size, $columns));
+  max-width: percentage(math.div($size, $columns));
+}

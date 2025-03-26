@@ -1,0 +1,124 @@
+// ====================================
+// NextGen Framework Cards
+// ====================================
+
+@use '../index' as *;
+
+// Box shadow variables if not defined
+$box-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !default;
+$box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1) !default;
+$box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1) !default;
+
+// Base card
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid var(--ng-border-color, rgba(0, 0, 0, 0.125));
+  border-radius: $border-radius;
+  box-shadow: $box-shadow-sm;
+  
+  &:hover {
+    box-shadow: $box-shadow;
+    transition: box-shadow 0.3s ease;
+  }
+}
+
+// Card body
+.card-body {
+  flex: 1 1 auto;
+  padding: $spacer * 1.25;
+}
+
+// Card title
+.card-title {
+  margin-bottom: $spacer * 0.75;
+  font-size: $font-size-lg;
+  font-weight: 600;
+}
+
+// Card subtitle
+.card-subtitle {
+  margin-top: -($spacer * 0.375);
+  margin-bottom: 0;
+  font-size: $font-size-base;
+  color: var(--ng-gray-600, #6c757d);
+}
+
+// Card text
+.card-text {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Card image
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: calc($border-radius - 1px);
+  border-top-right-radius: calc($border-radius - 1px);
+}
+
+// Card header
+.card-header {
+  padding: $spacer * 0.75 $spacer * 1.25;
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid var(--ng-border-color, rgba(0, 0, 0, 0.125));
+  
+  &:first-child {
+    border-top-left-radius: calc($border-radius - 1px);
+    border-top-right-radius: calc($border-radius - 1px);
+  }
+}
+
+// Card footer
+.card-footer {
+  padding: $spacer * 0.75 $spacer * 1.25;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid var(--ng-border-color, rgba(0, 0, 0, 0.125));
+  
+  &:last-child {
+    border-bottom-left-radius: calc($border-radius - 1px);
+    border-bottom-right-radius: calc($border-radius - 1px);
+  }
+}
+
+// Card groups
+.card-group {
+  display: flex;
+  flex-direction: column;
+  
+  > .card {
+    margin-bottom: $spacer;
+  }
+  
+  @media (min-width: 576px) {
+    flex-flow: row wrap;
+    
+    > .card {
+      flex: 1 0 0%;
+      margin-bottom: 0;
+      
+      + .card {
+        margin-left: 0;
+        border-left: 0;
+      }
+      
+      // Handle rounded corners
+      &:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      
+      &:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}

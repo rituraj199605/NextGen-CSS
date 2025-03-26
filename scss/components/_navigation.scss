@@ -1,0 +1,311 @@
+// ====================================
+// NextGen Framework Navigation Components
+// ====================================
+
+@use '../index' as *;
+@use 'sass:map';
+
+// Define the media-breakpoint-up mixin if not available
+@mixin media-breakpoint-up($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    $min-width: map.get($breakpoints, $breakpoint);
+    @media (min-width: $min-width) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint `#{$breakpoint}` in $breakpoints.";
+  }
+}
+
+// Define breakpoints if not already available
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+
+// Z-index variables if not defined elsewhere
+$z-index-fixed: 1030 !default;
+$z-index-sticky: 1020 !default;
+$z-index-dropdown: 1000 !default;
+$z-index-modal: 1050 !default;
+$z-index-popover: 1060 !default;
+$z-index-tooltip: 1070 !default;
+
+// Navbar
+// ------------------------------------
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacer $spacer * 1.25;
+  background-color: var(--ng-white, $white);
+  box-shadow: $box-shadow-sm;
+  
+  // Container within navbar
+  > .container,
+  > .container-fluid {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+// Fixed navbar
+.navbar-fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: $z-index-fixed;
+}
+
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $z-index-fixed;
+}
+
+// Sticky navbar
+.navbar-sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+}
+
+// Navbar brand
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: $spacer;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--ng-gray-900, $gray-900);
+  text-decoration: none;
+  white-space: nowrap;
+  
+  &:hover,
+  &:focus {
+    color: var(--ng-primary, $primary);
+    text-decoration: none;
+  }
+  
+  img {
+    margin-right: 0.5rem;
+  }
+}
+
+// Navbar toggler (for mobile)
+.navbar-toggler {
+  padding: 0.25rem 0.75rem;
+  font-size: $font-size-base;
+  line-height: 1;
+  background-color: transparent;
+  border: $border-width solid var(--ng-border-color, $gray-300);
+  border-radius: $border-radius;
+  cursor: pointer;
+  
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
+  }
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+// Navbar collapse
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+}
+
+// Navbar nav
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  
+  .nav-link {
+    padding: 0.5rem 1rem;
+    color: var(--ng-gray-700, $gray-700);
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+    
+    &:hover,
+    &:focus {
+      color: var(--ng-primary, $primary);
+    }
+  }
+  
+  .nav-item {
+    margin-bottom: 0;
+  }
+  
+  .active {
+    color: var(--ng-primary, $primary);
+    font-weight: $font-weight-medium;
+  }
+  
+  .disabled {
+    color: var(--ng-gray-400, $gray-400);
+    pointer-events: none;
+    cursor: default;
+  }
+  
+  // Responsive behavior
+  @include media-breakpoint-up(md) {
+    flex-direction: row;
+    
+    .nav-link {
+      padding-right: 0.75rem;
+      padding-left: 0.75rem;
+    }
+  }
+}
+
+// Nav
+// ------------------------------------
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--ng-link-color, $link-color);
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+  
+  &:hover,
+  &:focus {
+    color: var(--ng-link-hover-color, $link-hover-color);
+  }
+  
+  &.disabled {
+    color: var(--ng-gray-400, $gray-400);
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+// Nav tabs
+.nav-tabs {
+  border-bottom: $border-width solid var(--ng-border-color, $gray-300);
+  
+  .nav-item {
+    margin-bottom: -$border-width;
+  }
+  
+  .nav-link {
+    margin-bottom: -$border-width;
+    border: $border-width solid transparent;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    
+    &:hover,
+    &:focus {
+      border-color: var(--ng-gray-200, $gray-200) var(--ng-gray-200, $gray-200) var(--ng-border-color, $gray-300);
+    }
+    
+    &.disabled {
+      color: var(--ng-gray-400, $gray-400);
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+  
+  .nav-link.active,
+  .nav-item.show .nav-link {
+    color: var(--ng-primary, $primary);
+    background-color: var(--ng-white, $white);
+    border-color: var(--ng-border-color, $gray-300) var(--ng-border-color, $gray-300) var(--ng-white, $white);
+  }
+}
+
+// Pagination
+// ------------------------------------
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -$border-width;
+  color: var(--ng-primary, $primary);
+  background-color: var(--ng-white, $white);
+  border: $border-width solid var(--ng-border-color, $gray-300);
+  text-decoration: none;
+  
+  &:hover {
+    z-index: 2;
+    color: var(--ng-link-hover-color, $link-hover-color);
+    background-color: var(--ng-gray-100, $gray-100);
+    border-color: var(--ng-border-color, $gray-300);
+  }
+  
+  &:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
+  }
+}
+
+.page-item {
+  &:first-child {
+    .page-link {
+      margin-left: 0;
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+    }
+  }
+  
+  &:last-child {
+    .page-link {
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+    }
+  }
+  
+  &.active .page-link {
+    z-index: 3;
+    color: var(--ng-white, $white);
+    background-color: var(--ng-primary, $primary);
+    border-color: var(--ng-primary, $primary);
+  }
+  
+  &.disabled .page-link {
+    color: var(--ng-gray-400, $gray-400);
+    pointer-events: none;
+    background-color: var(--ng-white, $white);
+    border-color: var(--ng-border-color, $gray-300);
+  }
+}
