@@ -4,11 +4,6 @@
 
 @use '../index' as *;
 
-// Box shadow variables if not defined
-$box-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !default;
-$box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1) !default;
-$box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1) !default;
-
 // Base card
 .card {
   position: relative;
@@ -16,14 +11,14 @@ $box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: var(--ng-card-bg);
   background-clip: border-box;
-  border: 1px solid var(--ng-border-color, rgba(0, 0, 0, 0.125));
+  border: 1px solid var(--ng-card-border);
   border-radius: $border-radius;
-  box-shadow: $box-shadow-sm;
+  box-shadow: var(--ng-box-shadow-sm);
   
   &:hover {
-    box-shadow: $box-shadow;
+    box-shadow: var(--ng-box-shadow);
     transition: box-shadow 0.3s ease;
   }
 }
@@ -32,6 +27,7 @@ $box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0
 .card-body {
   flex: 1 1 auto;
   padding: $spacer * 1.25;
+  color: var(--ng-body-color);
 }
 
 // Card title
@@ -39,6 +35,7 @@ $box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0
   margin-bottom: $spacer * 0.75;
   font-size: $font-size-lg;
   font-weight: 600;
+  color: var(--ng-body-color);
 }
 
 // Card subtitle
@@ -46,11 +43,13 @@ $box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0
   margin-top: -($spacer * 0.375);
   margin-bottom: 0;
   font-size: $font-size-base;
-  color: var(--ng-gray-600, #6c757d);
+  color: var(--ng-gray-600);
 }
 
 // Card text
 .card-text {
+  color: var(--ng-body-color);
+  
   &:last-child {
     margin-bottom: 0;
   }
@@ -67,8 +66,9 @@ $box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0
 .card-header {
   padding: $spacer * 0.75 $spacer * 1.25;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid var(--ng-border-color, rgba(0, 0, 0, 0.125));
+  background-color: var(--ng-card-header-bg);
+  border-bottom: 1px solid var(--ng-card-header-border);
+  color: var(--ng-body-color);
   
   &:first-child {
     border-top-left-radius: calc($border-radius - 1px);
@@ -79,8 +79,9 @@ $box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0
 // Card footer
 .card-footer {
   padding: $spacer * 0.75 $spacer * 1.25;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-top: 1px solid var(--ng-border-color, rgba(0, 0, 0, 0.125));
+  background-color: var(--ng-card-footer-bg);
+  border-top: 1px solid var(--ng-card-footer-border);
+  color: var(--ng-body-color);
   
   &:last-child {
     border-bottom-left-radius: calc($border-radius - 1px);

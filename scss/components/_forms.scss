@@ -19,29 +19,29 @@ $border-radius-lg: 0.5rem !default;
   font-weight: $font-weight-normal;
   line-height: $line-height-base;
   color: var(--ng-body-color);
-  background-color: var(--ng-white, $white);
+  background-color: var(--ng-input-bg);
   background-clip: padding-box;
-  border: $border-width solid var(--ng-border-color, $gray-300);
+  border: $border-width solid var(--ng-input-border);
   border-radius: $border-radius;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   appearance: none;
   
   &:focus {
     color: var(--ng-body-color);
-    background-color: var(--ng-white, $white);
-    border-color: color.adjust($primary, $lightness: 25%);
+    background-color: var(--ng-input-bg);
+    border-color: var(--ng-primary);
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(var(--ng-primary), 0.25);
   }
   
   &::placeholder {
-    color: var(--ng-gray-500, $gray-500);
+    color: var(--ng-gray-500);
     opacity: 1;
   }
   
   &:disabled,
   &[readonly] {
-    background-color: var(--ng-gray-200, $gray-100);
+    background-color: var(--ng-input-disabled-bg);
     opacity: 1;
   }
 }
@@ -74,7 +74,7 @@ select.form-control {
 .form-text {
   margin-top: 0.25rem;
   font-size: $font-size-sm;
-  color: var(--ng-gray-600, $gray-500);
+  color: var(--ng-gray-600);
 }
 
 // Form label
@@ -82,7 +82,7 @@ select.form-control {
   margin-bottom: 0.5rem;
   font-size: $font-size-base;
   font-weight: $font-weight-medium;
-  color: var(--ng-gray-800, $gray-900);
+  color: var(--ng-body-color);
 }
 
 // Form check
@@ -98,19 +98,19 @@ select.form-control {
   height: 1rem;
   margin-top: 0.25rem;
   margin-left: -1.5rem;
-  background-color: var(--ng-white, $white);
+  background-color: var(--ng-input-bg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  border: $border-width solid var(--ng-gray-500, $gray-500);
+  border: $border-width solid var(--ng-input-border);
   appearance: none;
   
   &[type="checkbox"] {
     border-radius: 0.25rem;
     
     &:checked {
-      background-color: var(--ng-primary, $primary);
-      border-color: var(--ng-primary, $primary);
+      background-color: var(--ng-primary);
+      border-color: var(--ng-primary);
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
     }
   }
@@ -119,43 +119,26 @@ select.form-control {
     border-radius: 50%;
     
     &:checked {
-      background-color: var(--ng-primary, $primary);
-      border-color: var(--ng-primary, $primary);
+      background-color: var(--ng-primary);
+      border-color: var(--ng-primary);
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
     }
   }
   
   &:focus {
-    border-color: color.adjust($primary, $lightness: 25%);
+    border-color: var(--ng-primary);
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(var(--ng-primary), 0.25);
   }
-}
-
-// Simple button styling
-.btn {
-  display: inline-block;
-  font-weight: $font-weight-medium;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  user-select: none;
-  border: $border-width solid transparent;
-  padding: 0.5rem 1rem;
-  font-size: $font-size-base;
-  line-height: $line-height-base;
-  border-radius: $border-radius;
-  transition: all 0.15s ease-in-out;
-  cursor: pointer;
 }
 
 // Form validation
 .is-valid {
-  border-color: var(--ng-success, $success);
+  border-color: var(--ng-success);
 }
 
 .is-invalid {
-  border-color: var(--ng-danger, $danger);
+  border-color: var(--ng-danger);
 }
 
 .invalid-feedback {
@@ -163,7 +146,7 @@ select.form-control {
   width: 100%;
   margin-top: 0.25rem;
   font-size: 85%;
-  color: var(--ng-danger, $danger);
+  color: var(--ng-danger);
 }
 
 .valid-feedback {
@@ -171,7 +154,7 @@ select.form-control {
   width: 100%;
   margin-top: 0.25rem;
   font-size: 85%;
-  color: var(--ng-success, $success);
+  color: var(--ng-success);
 }
 
 .is-invalid ~ .invalid-feedback,
