@@ -17,16 +17,6 @@
   }
 }
 
-// Define breakpoints if not already available
-$breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px
-) !default;
-
 // Z-index variables if not defined elsewhere
 $z-index-fixed: 1030 !default;
 $z-index-sticky: 1020 !default;
@@ -44,8 +34,8 @@ $z-index-tooltip: 1070 !default;
   align-items: center;
   justify-content: space-between;
   padding: $spacer $spacer * 1.25;
-  background-color: var(--ng-white, $white);
-  box-shadow: $box-shadow-sm;
+  background-color: var(--ng-card-bg);
+  box-shadow: var(--ng-box-shadow-sm);
   
   // Container within navbar
   > .container,
@@ -90,13 +80,13 @@ $z-index-tooltip: 1070 !default;
   margin-right: $spacer;
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: var(--ng-gray-900, $gray-900);
+  color: var(--ng-body-color);
   text-decoration: none;
   white-space: nowrap;
   
   &:hover,
   &:focus {
-    color: var(--ng-primary, $primary);
+    color: var(--ng-primary);
     text-decoration: none;
   }
   
@@ -111,9 +101,10 @@ $z-index-tooltip: 1070 !default;
   font-size: $font-size-base;
   line-height: 1;
   background-color: transparent;
-  border: $border-width solid var(--ng-border-color, $gray-300);
+  border: $border-width solid var(--ng-border-color);
   border-radius: $border-radius;
   cursor: pointer;
+  color: var(--ng-body-color);
   
   &:focus {
     outline: 0;
@@ -148,13 +139,13 @@ $z-index-tooltip: 1070 !default;
   
   .nav-link {
     padding: 0.5rem 1rem;
-    color: var(--ng-gray-700, $gray-700);
+    color: var(--ng-body-color);
     text-decoration: none;
     transition: color 0.15s ease-in-out;
     
     &:hover,
     &:focus {
-      color: var(--ng-primary, $primary);
+      color: var(--ng-primary);
     }
   }
   
@@ -163,12 +154,12 @@ $z-index-tooltip: 1070 !default;
   }
   
   .active {
-    color: var(--ng-primary, $primary);
+    color: var(--ng-primary);
     font-weight: $font-weight-medium;
   }
   
   .disabled {
-    color: var(--ng-gray-400, $gray-400);
+    color: var(--ng-gray-400);
     pointer-events: none;
     cursor: default;
   }
@@ -197,17 +188,17 @@ $z-index-tooltip: 1070 !default;
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
-  color: var(--ng-link-color, $link-color);
+  color: var(--ng-link-color);
   text-decoration: none;
   transition: color 0.15s ease-in-out;
   
   &:hover,
   &:focus {
-    color: var(--ng-link-hover-color, $link-hover-color);
+    color: var(--ng-link-hover-color);
   }
   
   &.disabled {
-    color: var(--ng-gray-400, $gray-400);
+    color: var(--ng-gray-400);
     pointer-events: none;
     cursor: default;
   }
@@ -215,7 +206,7 @@ $z-index-tooltip: 1070 !default;
 
 // Nav tabs
 .nav-tabs {
-  border-bottom: $border-width solid var(--ng-border-color, $gray-300);
+  border-bottom: $border-width solid var(--ng-border-color);
   
   .nav-item {
     margin-bottom: -$border-width;
@@ -229,11 +220,11 @@ $z-index-tooltip: 1070 !default;
     
     &:hover,
     &:focus {
-      border-color: var(--ng-gray-200, $gray-200) var(--ng-gray-200, $gray-200) var(--ng-border-color, $gray-300);
+      border-color: var(--ng-gray-200) var(--ng-gray-200) var(--ng-border-color);
     }
     
     &.disabled {
-      color: var(--ng-gray-400, $gray-400);
+      color: var(--ng-gray-400);
       background-color: transparent;
       border-color: transparent;
     }
@@ -241,9 +232,9 @@ $z-index-tooltip: 1070 !default;
   
   .nav-link.active,
   .nav-item.show .nav-link {
-    color: var(--ng-primary, $primary);
-    background-color: var(--ng-white, $white);
-    border-color: var(--ng-border-color, $gray-300) var(--ng-border-color, $gray-300) var(--ng-white, $white);
+    color: var(--ng-primary);
+    background-color: var(--ng-card-bg);
+    border-color: var(--ng-border-color) var(--ng-border-color) var(--ng-card-bg);
   }
 }
 
@@ -260,16 +251,16 @@ $z-index-tooltip: 1070 !default;
   display: block;
   padding: 0.5rem 0.75rem;
   margin-left: -$border-width;
-  color: var(--ng-primary, $primary);
-  background-color: var(--ng-white, $white);
-  border: $border-width solid var(--ng-border-color, $gray-300);
+  color: var(--ng-primary);
+  background-color: var(--ng-card-bg);
+  border: $border-width solid var(--ng-border-color);
   text-decoration: none;
   
   &:hover {
     z-index: 2;
-    color: var(--ng-link-hover-color, $link-hover-color);
-    background-color: var(--ng-gray-100, $gray-100);
-    border-color: var(--ng-border-color, $gray-300);
+    color: var(--ng-link-hover-color);
+    background-color: var(--ng-gray-100);
+    border-color: var(--ng-border-color);
   }
   
   &:focus {
@@ -297,15 +288,15 @@ $z-index-tooltip: 1070 !default;
   
   &.active .page-link {
     z-index: 3;
-    color: var(--ng-white, $white);
-    background-color: var(--ng-primary, $primary);
-    border-color: var(--ng-primary, $primary);
+    color: var(--ng-white);
+    background-color: var(--ng-primary);
+    border-color: var(--ng-primary);
   }
   
   &.disabled .page-link {
-    color: var(--ng-gray-400, $gray-400);
+    color: var(--ng-gray-400);
     pointer-events: none;
-    background-color: var(--ng-white, $white);
-    border-color: var(--ng-border-color, $gray-300);
+    background-color: var(--ng-card-bg);
+    border-color: var(--ng-border-color);
   }
 }

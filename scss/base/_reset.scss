@@ -1,6 +1,5 @@
 // NextGen Framework Reset
 @use '../index' as *;
-@use "../index" as *;
 
 // Box sizing
 *, *::before, *::after {
@@ -14,7 +13,7 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol {
 }
 
 // Body basic styling
-body {
+html, body {
   font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-normal;
@@ -27,3 +26,29 @@ body {
 h1 { font-size: $h1-font-size; }
 h2 { font-size: $h2-font-size; }
 h3 { font-size: $h3-font-size; }
+h4 { font-size: $h4-font-size; }
+h5 { font-size: $h5-font-size; }
+h6 { font-size: $h6-font-size; }
+
+// Links
+a {
+  color: var(--ng-link-color);
+  text-decoration: none;
+  
+  &:hover {
+    color: var(--ng-link-hover-color);
+    text-decoration: $link-hover-decoration;
+  }
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+// Tables
+table {
+  border-collapse: collapse;
+}

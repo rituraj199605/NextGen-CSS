@@ -1,6 +1,6 @@
 {
   "name": "nextgen-css-framework",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A modern, lightweight, and flexible CSS framework for next-generation websites",
   "main": "dist/nextgen.css",
   "style": "dist/nextgen.css",

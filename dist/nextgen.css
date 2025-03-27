@@ -27,16 +27,62 @@
   --ng-link-color: #3b82f6;
   --ng-link-hover-color: rgb(10.0317073171, 89.1707317073, 218.4682926829);
   --ng-border-color: #cbd5e1;
+  --ng-card-bg: #ffffff;
+  --ng-card-border: #e2e8f0;
+  --ng-card-header-bg: #f1f5f9;
+  --ng-card-header-border: #e2e8f0;
+  --ng-card-footer-bg: #f1f5f9;
+  --ng-card-footer-border: #e2e8f0;
+  --ng-input-bg: #ffffff;
+  --ng-input-border: #cbd5e1;
+  --ng-input-disabled-bg: #f1f5f9;
+  --ng-code-bg: #f1f5f9;
+  --ng-box-shadow-sm: 0 1px 2px 0 rgba(2, 6, 23, 0.05);
+  --ng-box-shadow: 0 1px 3px 0 rgba(2, 6, 23, 0.1), 0 1px 2px -1px rgba(2, 6, 23, 0.1);
+  --ng-box-shadow-lg: 0 10px 15px -3px rgba(2, 6, 23, 0.1), 0 4px 6px -4px rgba(2, 6, 23, 0.1);
+  --ng-box-shadow-xl: 0 20px 25px -5px rgba(2, 6, 23, 0.1), 0 8px 10px -6px rgba(2, 6, 23, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --ng-primary: rgb(107.7609756098, 161.0975609756, 248.2390243902);
+    --ng-secondary: rgb(141.8807531381, 154.9016736402, 173.6192468619);
+    --ng-success: rgb(20.0597014925, 231.9402985075, 161.7313432836);
+    --ng-info: rgb(20.6330275229, 215.2018348624, 248.3669724771);
+    --ng-warning: rgb(246.0039370079, 167.7381889764, 35.4960629921);
+    --ng-danger: rgb(243.0197044335, 114.9802955665, 114.9802955665);
+    --ng-light: rgb(42.9, 71.5, 100.1);
+    --ng-dark: rgb(28.4210526316, 43.5789473684, 79.5789473684);
+    --ng-white: #0f172a;
+    --ng-black: #f1f5f9;
+    --ng-gray-100: #1e293b;
+    --ng-gray-200: #334155;
+    --ng-gray-300: #475569;
+    --ng-gray-400: #64748b;
+    --ng-gray-500: #94a3b8;
+    --ng-gray-600: #cbd5e1;
+    --ng-gray-700: #e2e8f0;
+    --ng-gray-800: #f1f5f9;
+    --ng-gray-900: #f1f5f9;
     --ng-body-bg: #0f172a;
     --ng-body-color: #f1f5f9;
-    --ng-border-color: #334155;
     --ng-link-color: rgb(132.1414634146, 176.6463414634, 249.3585365854);
     --ng-link-hover-color: rgb(180.9024390244, 207.743902439, 251.5975609756);
+    --ng-border-color: #334155;
+    --ng-card-bg: #1e293b;
+    --ng-card-border: #334155;
+    --ng-card-header-bg: #0f172a;
+    --ng-card-header-border: #334155;
+    --ng-card-footer-bg: #0f172a;
+    --ng-card-footer-border: #334155;
+    --ng-input-bg: #1e293b;
+    --ng-input-border: #475569;
+    --ng-input-disabled-bg: #0f172a;
+    --ng-code-bg: #1e293b;
+    --ng-box-shadow-sm: 0 1px 2px 0 rgba(2, 6, 23, 0.25);
+    --ng-box-shadow: 0 1px 3px 0 rgba(2, 6, 23, 0.3), 0 1px 2px -1px rgba(2, 6, 23, 0.3);
+    --ng-box-shadow-lg: 0 10px 15px -3px rgba(2, 6, 23, 0.3), 0 4px 6px -4px rgba(2, 6, 23, 0.3);
+    --ng-box-shadow-xl: 0 20px 25px -5px rgba(2, 6, 23, 0.3), 0 8px 10px -6px rgba(2, 6, 23, 0.3);
   }
 }
 @keyframes fadeIn {
@@ -75,10 +121,6 @@
  * NextGen CSS Framework v1.0.0
  * License: MIT
  */
-/*! 
- * NextGen CSS Framework v1.0.0
- * License: MIT
- */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -88,7 +130,7 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol {
   padding: 0;
 }
 
-body {
+html, body {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-size: 1rem;
   font-weight: 400;
@@ -107,6 +149,37 @@ h2 {
 
 h3 {
   font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+a {
+  color: var(--ng-link-color);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--ng-link-hover-color);
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+table {
+  border-collapse: collapse;
 }
 
 /*! 
@@ -1528,7 +1601,7 @@ p:last-child {
 }
 .btn:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(var(--ng-primary), 0.25);
 }
 .btn:disabled, .btn.disabled {
   opacity: 0.65;
@@ -1536,9 +1609,9 @@ p:last-child {
 }
 
 .btn-primary {
-  background-color: #3b82f6;
-  border-color: #3b82f6;
-  color: #fff;
+  background-color: var(--ng-primary);
+  border-color: var(--ng-primary);
+  color: var(--ng-white);
 }
 .btn-primary:hover {
   background-color: rgb(22.4292682927, 106.6768292683, 244.3207317073);
@@ -1551,9 +1624,9 @@ p:last-child {
 }
 
 .btn-secondary {
-  background-color: #64748b;
-  border-color: #64748b;
-  color: #fff;
+  background-color: var(--ng-secondary);
+  border-color: var(--ng-secondary);
+  color: var(--ng-white);
 }
 .btn-secondary:hover {
   background-color: rgb(83.9958158996, 97.4351464435, 116.7541841004);
@@ -1566,9 +1639,9 @@ p:last-child {
 }
 
 .btn-success {
-  background-color: #10b981;
-  border-color: #10b981;
-  color: #fff;
+  background-color: var(--ng-success);
+  border-color: var(--ng-success);
+  color: var(--ng-white);
 }
 .btn-success:hover {
   background-color: rgb(12.9552238806, 149.7947761194, 104.4514925373);
@@ -1582,31 +1655,31 @@ p:last-child {
 
 .btn-outline-primary {
   background-color: transparent;
-  border-color: #3b82f6;
-  color: #3b82f6;
+  border-color: var(--ng-primary);
+  color: var(--ng-primary);
 }
 .btn-outline-primary:hover {
-  background-color: #3b82f6;
-  color: #fff;
+  background-color: var(--ng-primary);
+  color: var(--ng-white);
 }
 .btn-outline-primary:focus, .btn-outline-primary:active {
-  background-color: #3b82f6;
-  color: #fff;
+  background-color: var(--ng-primary);
+  color: var(--ng-white);
   box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
 }
 
 .btn-outline-secondary {
   background-color: transparent;
-  border-color: #64748b;
-  color: #64748b;
+  border-color: var(--ng-secondary);
+  color: var(--ng-secondary);
 }
 .btn-outline-secondary:hover {
-  background-color: #64748b;
-  color: #fff;
+  background-color: var(--ng-secondary);
+  color: var(--ng-white);
 }
 .btn-outline-secondary:focus, .btn-outline-secondary:active {
-  background-color: #64748b;
-  color: #fff;
+  background-color: var(--ng-secondary);
+  color: var(--ng-white);
   box-shadow: 0 0 0 0.25rem rgba(100, 116, 139, 0.25);
 }
 
@@ -1635,35 +1708,40 @@ p:last-child {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: var(--ng-card-bg);
   background-clip: border-box;
-  border: 1px solid var(--ng-border-color, rgba(0, 0, 0, 0.125));
+  border: 1px solid var(--ng-card-border);
   border-radius: 0.375rem;
-  box-shadow: 0 1px 2px 0 rgba(2, 6, 23, 0.05);
+  box-shadow: var(--ng-box-shadow-sm);
 }
 .card:hover {
-  box-shadow: 0 1px 3px 0 rgba(2, 6, 23, 0.1), 0 1px 2px -1px rgba(2, 6, 23, 0.1);
+  box-shadow: var(--ng-box-shadow);
   transition: box-shadow 0.3s ease;
 }
 
 .card-body {
   flex: 1 1 auto;
   padding: 1.25rem;
+  color: var(--ng-body-color);
 }
 
 .card-title {
   margin-bottom: 0.75rem;
   font-size: 1.125rem;
   font-weight: 600;
+  color: var(--ng-body-color);
 }
 
 .card-subtitle {
   margin-top: -0.375rem;
   margin-bottom: 0;
   font-size: 1rem;
-  color: var(--ng-gray-600, #6c757d);
+  color: var(--ng-gray-600);
 }
 
+.card-text {
+  color: var(--ng-body-color);
+}
 .card-text:last-child {
   margin-bottom: 0;
 }
@@ -1677,8 +1755,9 @@ p:last-child {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid var(--ng-border-color, rgba(0, 0, 0, 0.125));
+  background-color: var(--ng-card-header-bg);
+  border-bottom: 1px solid var(--ng-card-header-border);
+  color: var(--ng-body-color);
 }
 .card-header:first-child {
   border-top-left-radius: calc(0.375rem - 1px);
@@ -1687,8 +1766,9 @@ p:last-child {
 
 .card-footer {
   padding: 0.75rem 1.25rem;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-top: 1px solid var(--ng-border-color, rgba(0, 0, 0, 0.125));
+  background-color: var(--ng-card-footer-bg);
+  border-top: 1px solid var(--ng-card-footer-border);
+  color: var(--ng-body-color);
 }
 .card-footer:last-child {
   border-bottom-left-radius: calc(0.375rem - 1px);
@@ -1736,26 +1816,26 @@ p:last-child {
   font-weight: 400;
   line-height: 1.5;
   color: var(--ng-body-color);
-  background-color: var(--ng-white, #ffffff);
+  background-color: var(--ng-input-bg);
   background-clip: padding-box;
-  border: 1px solid var(--ng-border-color, #cbd5e1);
+  border: 1px solid var(--ng-input-border);
   border-radius: 0.375rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   appearance: none;
 }
 .form-control:focus {
   color: var(--ng-body-color);
-  background-color: var(--ng-white, #ffffff);
-  border-color: rgb(180.9024390244, 207.743902439, 251.5975609756);
+  background-color: var(--ng-input-bg);
+  border-color: var(--ng-primary);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(var(--ng-primary), 0.25);
 }
 .form-control::placeholder {
-  color: var(--ng-gray-500, #64748b);
+  color: var(--ng-gray-500);
   opacity: 1;
 }
 .form-control:disabled, .form-control[readonly] {
-  background-color: var(--ng-gray-200, #f1f5f9);
+  background-color: var(--ng-input-disabled-bg);
   opacity: 1;
 }
 
@@ -1784,14 +1864,14 @@ select.form-control {
 .form-text {
   margin-top: 0.25rem;
   font-size: 0.875rem;
-  color: var(--ng-gray-600, #64748b);
+  color: var(--ng-gray-600);
 }
 
 .form-label {
   margin-bottom: 0.5rem;
   font-size: 1rem;
   font-weight: 500;
-  color: var(--ng-gray-800, #0f172a);
+  color: var(--ng-body-color);
 }
 
 .form-check {
@@ -1806,57 +1886,41 @@ select.form-control {
   height: 1rem;
   margin-top: 0.25rem;
   margin-left: -1.5rem;
-  background-color: var(--ng-white, #ffffff);
+  background-color: var(--ng-input-bg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  border: 1px solid var(--ng-gray-500, #64748b);
+  border: 1px solid var(--ng-input-border);
   appearance: none;
 }
 .form-check-input[type=checkbox] {
   border-radius: 0.25rem;
 }
 .form-check-input[type=checkbox]:checked {
-  background-color: var(--ng-primary, #3b82f6);
-  border-color: var(--ng-primary, #3b82f6);
+  background-color: var(--ng-primary);
+  border-color: var(--ng-primary);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
 }
 .form-check-input[type=radio] {
   border-radius: 50%;
 }
 .form-check-input[type=radio]:checked {
-  background-color: var(--ng-primary, #3b82f6);
-  border-color: var(--ng-primary, #3b82f6);
+  background-color: var(--ng-primary);
+  border-color: var(--ng-primary);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
 }
 .form-check-input:focus {
-  border-color: rgb(180.9024390244, 207.743902439, 251.5975609756);
+  border-color: var(--ng-primary);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
-}
-
-.btn {
-  display: inline-block;
-  font-weight: 500;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  user-select: none;
-  border: 1px solid transparent;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0.375rem;
-  transition: all 0.15s ease-in-out;
-  cursor: pointer;
+  box-shadow: 0 0 0 0.25rem rgba(var(--ng-primary), 0.25);
 }
 
 .is-valid {
-  border-color: var(--ng-success, #10b981);
+  border-color: var(--ng-success);
 }
 
 .is-invalid {
-  border-color: var(--ng-danger, #ef4444);
+  border-color: var(--ng-danger);
 }
 
 .invalid-feedback {
@@ -1864,7 +1928,7 @@ select.form-control {
   width: 100%;
   margin-top: 0.25rem;
   font-size: 85%;
-  color: var(--ng-danger, #ef4444);
+  color: var(--ng-danger);
 }
 
 .valid-feedback {
@@ -1872,7 +1936,7 @@ select.form-control {
   width: 100%;
   margin-top: 0.25rem;
   font-size: 85%;
-  color: var(--ng-success, #10b981);
+  color: var(--ng-success);
 }
 
 .is-invalid ~ .invalid-feedback,
@@ -1893,8 +1957,8 @@ select.form-control {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.25rem;
-  background-color: var(--ng-white, #ffffff);
-  box-shadow: 0 1px 2px 0 rgba(2, 6, 23, 0.05);
+  background-color: var(--ng-card-bg);
+  box-shadow: var(--ng-box-shadow-sm);
 }
 .navbar > .container,
 .navbar > .container-fluid {
@@ -1934,12 +1998,12 @@ select.form-control {
   margin-right: 1rem;
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--ng-gray-900, #0f172a);
+  color: var(--ng-body-color);
   text-decoration: none;
   white-space: nowrap;
 }
 .navbar-brand:hover, .navbar-brand:focus {
-  color: var(--ng-primary, #3b82f6);
+  color: var(--ng-primary);
   text-decoration: none;
 }
 .navbar-brand img {
@@ -1951,9 +2015,10 @@ select.form-control {
   font-size: 1rem;
   line-height: 1;
   background-color: transparent;
-  border: 1px solid var(--ng-border-color, #cbd5e1);
+  border: 1px solid var(--ng-border-color);
   border-radius: 0.375rem;
   cursor: pointer;
+  color: var(--ng-body-color);
 }
 .navbar-toggler:focus {
   outline: 0;
@@ -1985,22 +2050,22 @@ select.form-control {
 }
 .navbar-nav .nav-link {
   padding: 0.5rem 1rem;
-  color: var(--ng-gray-700, #334155);
+  color: var(--ng-body-color);
   text-decoration: none;
   transition: color 0.15s ease-in-out;
 }
 .navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
-  color: var(--ng-primary, #3b82f6);
+  color: var(--ng-primary);
 }
 .navbar-nav .nav-item {
   margin-bottom: 0;
 }
 .navbar-nav .active {
-  color: var(--ng-primary, #3b82f6);
+  color: var(--ng-primary);
   font-weight: 500;
 }
 .navbar-nav .disabled {
-  color: var(--ng-gray-400, #94a3b8);
+  color: var(--ng-gray-400);
   pointer-events: none;
   cursor: default;
 }
@@ -2025,21 +2090,21 @@ select.form-control {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
-  color: var(--ng-link-color, #3b82f6);
+  color: var(--ng-link-color);
   text-decoration: none;
   transition: color 0.15s ease-in-out;
 }
 .nav-link:hover, .nav-link:focus {
-  color: var(--ng-link-hover-color, rgb(10.0317073171, 89.1707317073, 218.4682926829));
+  color: var(--ng-link-hover-color);
 }
 .nav-link.disabled {
-  color: var(--ng-gray-400, #94a3b8);
+  color: var(--ng-gray-400);
   pointer-events: none;
   cursor: default;
 }
 
 .nav-tabs {
-  border-bottom: 1px solid var(--ng-border-color, #cbd5e1);
+  border-bottom: 1px solid var(--ng-border-color);
 }
 .nav-tabs .nav-item {
   margin-bottom: -1px;
@@ -2051,18 +2116,18 @@ select.form-control {
   border-top-right-radius: 0.375rem;
 }
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
-  border-color: var(--ng-gray-200, #e2e8f0) var(--ng-gray-200, #e2e8f0) var(--ng-border-color, #cbd5e1);
+  border-color: var(--ng-gray-200) var(--ng-gray-200) var(--ng-border-color);
 }
 .nav-tabs .nav-link.disabled {
-  color: var(--ng-gray-400, #94a3b8);
+  color: var(--ng-gray-400);
   background-color: transparent;
   border-color: transparent;
 }
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: var(--ng-primary, #3b82f6);
-  background-color: var(--ng-white, #ffffff);
-  border-color: var(--ng-border-color, #cbd5e1) var(--ng-border-color, #cbd5e1) var(--ng-white, #ffffff);
+  color: var(--ng-primary);
+  background-color: var(--ng-card-bg);
+  border-color: var(--ng-border-color) var(--ng-border-color) var(--ng-card-bg);
 }
 
 .pagination {
@@ -2076,16 +2141,16 @@ select.form-control {
   display: block;
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
-  color: var(--ng-primary, #3b82f6);
-  background-color: var(--ng-white, #ffffff);
-  border: 1px solid var(--ng-border-color, #cbd5e1);
+  color: var(--ng-primary);
+  background-color: var(--ng-card-bg);
+  border: 1px solid var(--ng-border-color);
   text-decoration: none;
 }
 .page-link:hover {
   z-index: 2;
-  color: var(--ng-link-hover-color, rgb(10.0317073171, 89.1707317073, 218.4682926829));
-  background-color: var(--ng-gray-100, #f1f5f9);
-  border-color: var(--ng-border-color, #cbd5e1);
+  color: var(--ng-link-hover-color);
+  background-color: var(--ng-gray-100);
+  border-color: var(--ng-border-color);
 }
 .page-link:focus {
   z-index: 3;
@@ -2104,15 +2169,15 @@ select.form-control {
 }
 .page-item.active .page-link {
   z-index: 3;
-  color: var(--ng-white, #ffffff);
-  background-color: var(--ng-primary, #3b82f6);
-  border-color: var(--ng-primary, #3b82f6);
+  color: var(--ng-white);
+  background-color: var(--ng-primary);
+  border-color: var(--ng-primary);
 }
 .page-item.disabled .page-link {
-  color: var(--ng-gray-400, #94a3b8);
+  color: var(--ng-gray-400);
   pointer-events: none;
-  background-color: var(--ng-white, #ffffff);
-  border-color: var(--ng-border-color, #cbd5e1);
+  background-color: var(--ng-card-bg);
+  border-color: var(--ng-border-color);
 }
 
 /*! 

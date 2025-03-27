@@ -24,6 +24,22 @@ $gray-700: #334155;
 $gray-800: #1e293b;
 $gray-900: #0f172a;
 
+// Dark mode colors (adjusted brightness for dark backgrounds)
+$primary-dark: color.adjust($primary, $lightness: 10%);
+$secondary-dark: color.adjust($secondary, $lightness: 15%);
+$success-dark: color.adjust($success, $lightness: 10%);
+$info-dark: color.adjust($info, $lightness: 10%);
+$warning-dark: color.adjust($warning, $lightness: 5%);
+$danger-dark: color.adjust($danger, $lightness: 10%);
+$light-dark: color.adjust($light, $lightness: -70%);
+$dark-dark: color.adjust($dark, $lightness: 10%);
+
+// Theme base colors
+$body-bg: $white;
+$body-color: $gray-900;
+$body-bg-dark: $gray-900;
+$body-color-dark: $gray-100;
+
 // Typography
 $font-family-base: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 $font-family-monospace: 'Roboto Mono', monospace;
@@ -93,6 +109,12 @@ $box-shadow: 0 1px 3px 0 rgba($black, 0.1), 0 1px 2px -1px rgba($black, 0.1) !de
 $box-shadow-lg: 0 10px 15px -3px rgba($black, 0.1), 0 4px 6px -4px rgba($black, 0.1) !default;
 $box-shadow-xl: 0 20px 25px -5px rgba($black, 0.1), 0 8px 10px -6px rgba($black, 0.1) !default;
 
+// Dark mode shadows
+$box-shadow-sm-dark: 0 1px 2px 0 rgba($black, 0.25) !default;
+$box-shadow-dark: 0 1px 3px 0 rgba($black, 0.3), 0 1px 2px -1px rgba($black, 0.3) !default;
+$box-shadow-lg-dark: 0 10px 15px -3px rgba($black, 0.3), 0 4px 6px -4px rgba($black, 0.3) !default;
+$box-shadow-xl-dark: 0 20px 25px -5px rgba($black, 0.3), 0 8px 10px -6px rgba($black, 0.3) !default;
+
 // Z-index
 $z-index-dropdown: 1000 !default;
 $z-index-sticky: 1020 !default;
@@ -103,6 +125,7 @@ $z-index-tooltip: 1070 !default;
 
 // Export CSS Variables
 :root {
+  // Main theme colors
   --ng-primary: #{$primary};
   --ng-secondary: #{$secondary};
   --ng-success: #{$success};
@@ -112,6 +135,7 @@ $z-index-tooltip: 1070 !default;
   --ng-light: #{$light};
   --ng-dark: #{$dark};
   
+  // Neutral colors
   --ng-white: #{$white};
   --ng-gray-100: #{$gray-100};
   --ng-gray-200: #{$gray-200};
@@ -124,21 +148,85 @@ $z-index-tooltip: 1070 !default;
   --ng-gray-900: #{$gray-900};
   --ng-black: #{$black};
   
-  --ng-body-bg: #{$white};
-  --ng-body-color: #{$gray-900};
+  // Theme base colors
+  --ng-body-bg: #{$body-bg};
+  --ng-body-color: #{$body-color};
   --ng-link-color: #{$link-color};
   --ng-link-hover-color: #{$link-hover-color};
   --ng-border-color: #{$gray-300};
+  
+  // Component specific variables
+  --ng-card-bg: #{$white};
+  --ng-card-border: #{$gray-200};
+  --ng-card-header-bg: #{$gray-100};
+  --ng-card-header-border: #{$gray-200};
+  --ng-card-footer-bg: #{$gray-100};
+  --ng-card-footer-border: #{$gray-200};
+  
+  --ng-input-bg: #{$white};
+  --ng-input-border: #{$gray-300};
+  --ng-input-disabled-bg: #{$gray-100};
+  
+  --ng-code-bg: #{$gray-100};
+  
+  --ng-box-shadow-sm: #{$box-shadow-sm};
+  --ng-box-shadow: #{$box-shadow};
+  --ng-box-shadow-lg: #{$box-shadow-lg};
+  --ng-box-shadow-xl: #{$box-shadow-xl};
 }
 
 // Dark mode
 @media (prefers-color-scheme: dark) {
   :root {
-    --ng-primary: #{color.adjust($primary, $lightness: 10%)};
-    --ng-body-bg: #{$gray-900};
-    --ng-body-color: #{$gray-100};
-    --ng-border-color: #{$gray-700};
+    // Main theme colors - dark mode variants
+    --ng-primary: #{$primary-dark};
+    --ng-secondary: #{$secondary-dark};
+    --ng-success: #{$success-dark};
+    --ng-info: #{$info-dark};
+    --ng-warning: #{$warning-dark};
+    --ng-danger: #{$danger-dark};
+    --ng-light: #{$light-dark};
+    --ng-dark: #{$dark-dark};
+    
+    // Neutral colors
+    --ng-white: #{$gray-900}; // Invert white to near-black
+    --ng-black: #{$gray-100}; // Invert black to near-white
+    
+    // Gray shades
+    --ng-gray-100: #{$gray-800};
+    --ng-gray-200: #{$gray-700};
+    --ng-gray-300: #{$gray-600};
+    --ng-gray-400: #{$gray-500};
+    --ng-gray-500: #{$gray-400};
+    --ng-gray-600: #{$gray-300};
+    --ng-gray-700: #{$gray-200};
+    --ng-gray-800: #{$gray-100};
+    --ng-gray-900: #{$gray-100};
+    
+    // Theme base colors
+    --ng-body-bg: #{$body-bg-dark};
+    --ng-body-color: #{$body-color-dark};
     --ng-link-color: #{color.adjust($primary, $lightness: 15%)};
     --ng-link-hover-color: #{color.adjust($primary, $lightness: 25%)};
+    --ng-border-color: #{$gray-700};
+    
+    // Component specific variables
+    --ng-card-bg: #{$gray-800};
+    --ng-card-border: #{$gray-700};
+    --ng-card-header-bg: #{$gray-900};
+    --ng-card-header-border: #{$gray-700};
+    --ng-card-footer-bg: #{$gray-900};
+    --ng-card-footer-border: #{$gray-700};
+    
+    --ng-input-bg: #{$gray-800};
+    --ng-input-border: #{$gray-600};
+    --ng-input-disabled-bg: #{$gray-900};
+    
+    --ng-code-bg: #{$gray-800};
+    
+    --ng-box-shadow-sm: #{$box-shadow-sm-dark};
+    --ng-box-shadow: #{$box-shadow-dark};
+    --ng-box-shadow-lg: #{$box-shadow-lg-dark};
+    --ng-box-shadow-xl: #{$box-shadow-xl-dark};
   }
 }
