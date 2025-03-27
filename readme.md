@@ -23,6 +23,30 @@ A modern, lightweight, and flexible CSS/SCSS framework for next-generation websi
 npm install nextgen-css-framework --save
 ```
 
+### CDN
+
+You can use NextGen CSS Framework directly from a CDN without any installation:
+
+#### jsDelivr (Recommended)
+
+```html
+<!-- Latest version (1.0.1) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nextgen-css-framework@1.0.1/dist/nextgen.min.css">
+
+<!-- Always latest version (not recommended for production) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nextgen-css-framework/dist/nextgen.min.css">
+```
+
+#### Unpkg
+
+```html
+<!-- Latest version (1.0.1) -->
+<link rel="stylesheet" href="https://unpkg.com/nextgen-css-framework@1.0.1/dist/nextgen.min.css">
+
+<!-- Always latest version (not recommended for production) -->
+<link rel="stylesheet" href="https://unpkg.com/nextgen-css-framework/dist/nextgen.min.css">
+```
+
 ### Manual Installation
 
 1. Download the source files from the repository
@@ -31,12 +55,6 @@ npm install nextgen-css-framework --save
 
 ```scss
 @import 'path/to/nextgen/scss/main';
-```
-
-### CDN
-
-```html
-<link rel="stylesheet" href="https://cdn.example.com/nextgen/dist/nextgen.min.css">
 ```
 
 ## Quick Start
@@ -48,7 +66,10 @@ npm install nextgen-css-framework --save
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NextGen CSS Framework</title>
-  <link rel="stylesheet" href="path/to/nextgen.css">
+  <!-- Use from CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nextgen-css-framework@1.0.1/dist/nextgen.min.css">
+  <!-- Or local file -->
+  <!-- <link rel="stylesheet" href="path/to/nextgen.css"> -->
 </head>
 <body>
   <div class="container">
